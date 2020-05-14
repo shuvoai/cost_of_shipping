@@ -1,0 +1,55 @@
+costOfPremiumShipping = 125.00;
+ground_shipping = 0;
+drone_shipping = 0;
+
+
+def costOfGroundShipping(weight):
+  cost = 0.00
+  if weight<=2:
+    cost=weight*1.50+20
+    return cost
+  elif weight>2 and weight<=6:
+    cost=weight*3.00+20
+    return cost
+  elif weight>6 and weight<=10:
+    cost=weight*4.00+20
+    return cost
+  elif weight>10:
+    cost=weight*4.75+20
+    return cost
+
+#print(costOfShipping(8.4))
+
+
+def costOfDroneShipping(weight):
+  cost = 0.00
+  if weight<=2:
+    cost=weight*4.50
+    return cost
+  elif weight>2 and weight<=6:
+    cost=weight*9.00
+    return cost
+  elif weight>6 and weight<=10:
+    cost=weight*12.00
+    return cost
+  elif weight>10:
+    cost=weight*14.25
+    return cost
+
+#print(costOfDroneShipping(1.5))
+
+def bestShippingRoute(weight):
+
+  ground_shipping =  costOfGroundShipping(weight)
+  drone_shipping = costOfDroneShipping(weight)
+
+  if ground_shipping<drone_shipping and ground_shipping<costOfPremiumShipping:
+    return The cheapest is ground shipping and the cost of shipping is +str   (ground_shipping)
+  elif drone_shipping<ground_shipping and drone_shipping<costOfPremiumShipping:
+    return The cheapest is drone shipping and the cost of shipping is +str   (drone_shipping)
+  else:
+    return The cheapest is Premium Shipping and the cost of shipping is +str   (costOfPremiumShipping)
+
+
+print(bestShippingRoute(4.8))
+print(bestShippingRoute(41.5))
